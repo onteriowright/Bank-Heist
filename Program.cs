@@ -7,66 +7,81 @@ namespace heist
   {
     static void Main(string[] args)
     {
-      int memberCount = 0;
-      int bankDifficultyLevel = 100;
-      int sumSkillLevel = 0;
-      int teamMemberSkillLevelInt = 0;
-      int sum = 0;
-      int total = 0;
+      List<Dictionary<string, string>> entireTeam = new List<Dictionary<string, string>>();
 
-      Console.WriteLine("Plan your heist");
+      int count = 0;
+      int bankDifficulty = 100;
+      int total = 0;
+      int teamSkillLevelCombined = 0;
+
+      Console.WriteLine("Time to plan a heist...");
 
       while (true)
       {
-        sumSkillLevel = sum;
-        Console.WriteLine("Enter team member's name...");
-        string teamMemberName = Console.ReadLine();
+
+        Dictionary<string, string> teamInfo = new Dictionary<string, string>();
+
+        string teamMemberName = "";
+
+        Console.WriteLine("Enter team member name...");
+        teamMemberName = Console.ReadLine();
+        teamInfo.Add("Name:", teamMemberName);
+
 
         if (teamMemberName == "")
         {
-          if (total < bankDifficultyLevel)
+          if (total < bankDifficulty)
           {
-            Console.WriteLine("Squad not strong enough");
+            Console.WriteLine("Get a day job");
           }
           else
           {
-            Console.WriteLine("Let's rob a bank!");
+            Console.WriteLine("Lets rob a bank");
+          };
+          if (count == 1)
+          {
+
+            Console.WriteLine($"You have {count} member on your team");
+          }
+          else
+          {
+            Console.WriteLine($"You have {count} members on your team");
+
           }
 
-          Console.WriteLine("You did not enter a name!");
+          foreach (Dictionary<string, string> team in entireTeam)
+          {
+            foreach (KeyValuePair<string, string> info in team)
+            {
+              Console.WriteLine($"Team member's {info.Key} {info.Value}");
+            }
+          }
           break;
         }
 
-        Console.WriteLine("Enter skill level...");
-        string teamMemberSkillLevel = Console.ReadLine();
-        teamMemberSkillLevelInt = int.Parse(teamMemberSkillLevel);
-        Console.WriteLine("Enter your courage factor...");
-        string teamMemberCourageFactor = Console.ReadLine();
-        decimal teamMemberCourageFactorDecimal = decimal.Parse(teamMemberCourageFactor);
-        memberCount++;
-        if (memberCount == 1)
-        {
-          Console.WriteLine($"Their is {memberCount} memeber in your crew");
-        }
-        else
-        {
 
-          Console.WriteLine($"Their are {memberCount} memebers in your crew");
-        }
+        Console.WriteLine("Enter team member skill level...(1 - 50)");
+        string skillLevel = Console.ReadLine();
+        int skillLevelInt = int.Parse(skillLevel);
+        teamInfo.Add("Skill level:", skillLevel);
+        Console.WriteLine("Enter courage factor in decimals...(0.0 - 2.0)");
+        teamInfo.Add("Courage factor:", Console.ReadLine());
 
-        sum = teamMemberSkillLevelInt;
+        total = teamSkillLevelCombined += skillLevelInt;
 
 
-        total = sum + sumSkillLevel;
-        Console.WriteLine(total);
+        entireTeam.Add(teamInfo);
+        count++;
 
-        Console.WriteLine($"{teamMemberName}'s skill level is {teamMemberSkillLevelInt} and your courage factor is {teamMemberCourageFactorDecimal}");
+
       }
 
-
-
-
-
     }
+
+
+
+
+
+
   }
 }
