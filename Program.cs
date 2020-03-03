@@ -9,7 +9,7 @@ namespace heist
     {
       Console.WriteLine("Lets plan a heist!");
 
-      Console.Write("What is the bank's dificulty? ");
+      Console.Write("What is the bank's dificulty level? ");
       int bankDifficulty = int.Parse(Console.ReadLine());
 
       List<Dictionary<string, string>> entireTeam = new List<Dictionary<string, string>>();
@@ -47,11 +47,11 @@ namespace heist
 
           foreach (Dictionary<string, string> member in entireTeam)
           {
-            foreach (KeyValuePair<string, string> info in member)
+            foreach (KeyValuePair<string, string> memberInfo in member)
             {
-              if (info.Key == "skillLevel")
+              if (memberInfo.Key == "skillLevel")
               {
-                totalTeamSkillLevel += int.Parse(info.Value);
+                totalTeamSkillLevel += int.Parse(memberInfo.Value);
               }
             }
           }
