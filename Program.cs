@@ -34,8 +34,12 @@ namespace heist
 
             Console.WriteLine($"You have {entireTeam.Count} member in your crew!");
           }
+          else
+          {
 
-          Console.WriteLine($"You have a crew of {entireTeam.Count} members!");
+            Console.WriteLine($"You have a crew of {entireTeam.Count} members!");
+          }
+
 
 
           Console.Write("How many times are we running the heist? ");
