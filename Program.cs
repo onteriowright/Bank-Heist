@@ -61,18 +61,19 @@ namespace heist
           for (int i = 0; i < heistRuns; i++)
           {
             Random bankLuckValue = new Random();
+            int temporaryBankDifficuly = bankDifficulty;
             int bankLuckValueInt = bankLuckValue.Next(-10, 11);
-            bankDifficulty += bankLuckValueInt;
+            temporaryBankDifficuly += bankLuckValueInt;
 
-            if (totalTeamSkillLevel >= bankDifficulty)
+            if (totalTeamSkillLevel >= temporaryBankDifficuly)
             {
-              Console.WriteLine($"The bank's difficuly level is {bankDifficulty}.");
+              Console.WriteLine($"The bank's difficuly level is {temporaryBankDifficuly}.");
               Console.WriteLine("💰💰💰💰💰");
               successfulRuns++;
             }
             else
             {
-              Console.WriteLine($"The bank's difficuly level is {bankDifficulty}.");
+              Console.WriteLine($"The bank's difficuly level is {temporaryBankDifficuly}.");
               Console.WriteLine("🚨🚨🚨🚨🚨");
               unsuccessfulRuns++;
             }
