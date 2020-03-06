@@ -10,7 +10,6 @@ namespace heist
       Console.WriteLine("Lets plan a Heist!");
       Console.WriteLine("===================");
 
-
       Console.Write("What is the bank's difficulty level? ");
 
       int bankDifficulty = int.Parse(Console.ReadLine());
@@ -19,9 +18,9 @@ namespace heist
       {
         List<string> smallBanks = new List<string>()
         {
-            "First Tennesee",
-            "Regions",
-            "Madison United"
+        "First Tennesee",
+        "Regions",
+        "Madison United"
         };
 
         Random index = new Random();
@@ -37,9 +36,9 @@ namespace heist
       {
         List<string> mediumBanks = new List<string>()
         {
-            "Chase",
-            "Clarksville Payway",
-            "Truth Finacials"
+        "Chase",
+        "Clarksville Payway",
+        "Truth Finacials"
         };
 
         Random index = new Random();
@@ -55,9 +54,9 @@ namespace heist
       {
         List<string> largeBanks = new List<string>()
         {
-            "Bank of America",
-            "Wells Fargo",
-            "U.S. Bank"
+        "Bank of America",
+        "Wells Fargo",
+        "U.S. Bank"
         };
 
         Random index = new Random();
@@ -161,11 +160,8 @@ namespace heist
 
         teamMembers.Add("skill level", skillLevel.ToString());
 
-
-
         Console.Write("What is your courage factor? Enter decimal 0.0 - 2.0: ");
         teamMembers.Add("courage factor", Console.ReadLine());
-
 
         entireTeam.Add(teamMembers);
 
@@ -177,7 +173,6 @@ namespace heist
       Console.WriteLine("===============================================");
       Console.WriteLine($"You had {unsuccessfulRuns} unsuccessful runs!");
       Console.WriteLine("===============================================");
-
 
       if (unsuccessfulRuns >= successfulRuns)
       {
