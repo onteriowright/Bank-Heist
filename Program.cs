@@ -79,33 +79,30 @@ namespace heist
       int successfulRuns = 0;
       int unsuccessfulRuns = 0;
 
-      List<Dictionary<string, string>> entireTeam = new List<Dictionary<string, string>>();
-
+      List<CrewMembers> entireCrew = new List<CrewMembers>();
       while (true)
       {
-        Dictionary<string, string> teamMembers = new Dictionary<string, string>();
-
         Console.Write("What is your name? ");
 
         string individualMembersName = Console.ReadLine();
 
         if (individualMembersName == "")
         {
-          if (entireTeam.Count == 0)
+          if (entireCrew.Count == 0)
           {
             Console.WriteLine("Can't rob a bank with no members!");
           }
-          else if (entireTeam.Count == 1)
+          else if (entireCrew.Count == 1)
           {
-            Console.WriteLine($"May need more than {entireTeam.Count} member to get the job done!");
+            Console.WriteLine($"May need more than {entireCrew.Count} member to get the job done!");
           }
-          else if (entireTeam.Count <= 4 && bankDifficulty > 75 && teamTotalSkillLevel < bankDifficulty)
+          else if (entireCrew.Count <= 4 && bankDifficulty > 75 && teamTotalSkillLevel < bankDifficulty)
           {
-            Console.WriteLine($"With only {entireTeam.Count} people, I really hope you know what your getting yourself into. You only have a combined skill level of {teamTotalSkillLevel} and the bank difficulty is {bankDifficulty}!");
+            Console.WriteLine($"With only {entireCrew.Count} people, I really hope you know what your getting yourself into. You only have a combined skill level of {teamTotalSkillLevel} and the bank difficulty is {bankDifficulty}!");
           }
           else
           {
-            Console.WriteLine($"A crew of {entireTeam.Count}! Let's Gooooo!");
+            Console.WriteLine($"A crew of {entireCrew.Count}! Let's Gooooo!");
           }
 
           Console.WriteLine("===========================================");
@@ -139,8 +136,6 @@ namespace heist
           break;
         }
 
-        teamMembers.Add("members name", individualMembersName);
-
         Console.Write("What is your skill level? Enter number 1 - 50: ");
         int skillLevel = int.Parse(Console.ReadLine());
 
@@ -158,13 +153,18 @@ namespace heist
 
         teamTotalSkillLevel += skillLevel;
 
-        teamMembers.Add("skill level", skillLevel.ToString());
-
         Console.Write("What is your courage factor? Enter decimal 0.0 - 2.0: ");
-        teamMembers.Add("courage factor", Console.ReadLine());
+        string courageFactor = Console.ReadLine();
+        decimal courageFactorDecimal = decimal.Parse(courageFactor);
 
-        entireTeam.Add(teamMembers);
+        CrewMembers entireCrews = new CrewMembers()
+        {
+          Name = individualMembersName,
+          SkillLevel = skillLevel,
+          CourageFactor = courageFactorDecimal
 
+        };
+        entireCrew.Add(entireCrews);
         Console.Clear();
       }
 
